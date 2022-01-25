@@ -1,15 +1,9 @@
 
 import React,{useState}  from 'react';
 import './App.css';
-import About from './Components/About';
 import Alert from './Components/Alert';
 import Navbar from './Components/Navbar';
 import Textform from './Components/Textform';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
 
 function App() {
   const [mode,setMode]=useState('light');
@@ -35,20 +29,11 @@ function App() {
   }
   return (
     <>  {/* jsx fragment  */}
-    <Router>
     <Navbar title="TEXTUTILS" mode={mode} toggleMode={toggleMode}/>
     <Alert alert={alert}/>
     <div className= "container my-3">
-    <Switch>
-          <Route  exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
-          <Textform showAlert={showAlert} heading="Enter the text to analyse" mode={mode}/>
-          </Route>
-        </Switch>
+    <Textform showAlert={showAlert} heading="Enter the text to analyse" mode={mode}/>
     </div>
-    </Router>
     </>
   );
 }
